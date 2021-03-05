@@ -3,7 +3,7 @@ import { MockedProvider } from '@apollo/client/testing'
 
 import { renderWithTheme } from 'utils/tests/helpers'
 import filterItemsMock from 'components/ExploreSidebar/mock'
-import { fetchMoreMock, gamesMock } from './mocks'
+import { fetchMoreMock, gamesMock, noGamesMock } from './mocks'
 
 import Games from '.'
 import userEvent from '@testing-library/user-event'
@@ -39,7 +39,6 @@ describe('<Games />', () => {
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument()
   })
 
   it('should render sections', async () => {
@@ -49,7 +48,6 @@ describe('<Games />', () => {
       </MockedProvider>
     )
 
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument()
     expect(await screen.findByText(/price/i)).toBeInTheDocument()
     expect(await screen.findByText(/sample game/i)).toBeInTheDocument()
 
@@ -83,5 +81,16 @@ describe('<Games />', () => {
       pathname: '/games',
       query: { platforms: ['windows', 'linux'], sort_by: 'low-to-high' }
     })
+  })
+  it('should render empty when no games found', async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[noGamesMock]} addTypename={false}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    )
+
+    expect(
+      await screen.findByText(/We didn't find any games with this filter/i)
+    ).toBeInTheDocument()
   })
 })
