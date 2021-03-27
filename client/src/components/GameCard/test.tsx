@@ -1,12 +1,12 @@
-import { fireEvent, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from 'utils/test-utils'
+
 import theme from 'styles/theme'
-import { renderWithTheme } from 'utils/tests/helpers'
 import item from './mock'
 import GameCard from '.'
 
 describe('<GameCard />', () => {
   it('should render correctly', () => {
-    const { container } = renderWithTheme(<GameCard {...item} />)
+    const { container } = render(<GameCard {...item} />)
 
     expect(
       screen.getByRole('heading', { name: item.title })
@@ -30,7 +30,7 @@ describe('<GameCard />', () => {
   })
 
   it('should render price in label', () => {
-    renderWithTheme(<GameCard {...item} />)
+    render(<GameCard {...item} />)
 
     const price = screen.getByText('$235.00')
 
@@ -39,7 +39,7 @@ describe('<GameCard />', () => {
   })
 
   it('should render a line-through in price when promotional', () => {
-    renderWithTheme(<GameCard {...item} promotionalPrice={15} />)
+    render(<GameCard {...item} promotionalPrice={15} />)
 
     expect(screen.getByText('$235.00')).toHaveStyle({
       textDecoration: 'line-through'
@@ -51,14 +51,14 @@ describe('<GameCard />', () => {
   })
 
   it('should render a filled Favorite icon when favorite is true', () => {
-    renderWithTheme(<GameCard {...item} favorite />)
+    render(<GameCard {...item} favorite />)
 
     expect(screen.getByLabelText(/remove from wishlist/i)).toBeInTheDocument()
   })
 
   it('should call onFav method when favorite is clicked', () => {
     const onFav = jest.fn()
-    renderWithTheme(<GameCard {...item} favorite onFav={onFav} />)
+    render(<GameCard {...item} favorite onFav={onFav} />)
 
     fireEvent.click(screen.getAllByRole('button')[0])
 
@@ -66,7 +66,7 @@ describe('<GameCard />', () => {
   })
 
   it('should render Ribbon', () => {
-    renderWithTheme(
+    render(
       <GameCard
         {...item}
         ribbon="My Ribbon"
