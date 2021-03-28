@@ -6,6 +6,10 @@ import * as EmptyStyles from 'components/Empty/styles'
 type WrapperProps = {
   isEmpty: boolean
 }
+export const GamesList = styled.div`
+  max-height: 40rem;
+  overflow-y: auto;
+`
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, isEmpty }) => css`
     background: ${theme.colors.white};
@@ -52,5 +56,19 @@ export const Footer = styled.div`
 export const Total = styled.span`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
+  `}
+`
+export const Loading = styled.div`
+  ${({ theme }) => css`
+    background: ${theme.colors.white};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+    min-width: 56rem;
+    svg {
+      height: 10rem;
+      width: 10rem;
+    }
   `}
 `

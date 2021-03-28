@@ -1,4 +1,5 @@
 export default {
+  id: '1',
   slug: 'population-zero',
   title: 'Population Zero',
   developer: 'Rockstar Games',
