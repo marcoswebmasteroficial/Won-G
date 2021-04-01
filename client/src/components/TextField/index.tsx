@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import * as S from './styles'
 
 export type TextFieldProps = {
-  onInput?: (value: string) => void
+  onInputChange?: (value: string) => void
   label?: string
   eyePassword?: boolean
   initialValue?: string
@@ -11,7 +11,7 @@ export type TextFieldProps = {
   iconPosition?: 'left' | 'right'
   disabled?: boolean
   error?: string
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'onInput'>
+} & InputHTMLAttributes<HTMLInputElement>
 
 const TextField = ({
   icon,
@@ -22,7 +22,7 @@ const TextField = ({
   initialValue = '',
   error,
   disabled = false,
-  onInput,
+  onInputChange,
   ...props
 }: TextFieldProps) => {
   const [value, setValue] = useState(initialValue)
@@ -31,7 +31,7 @@ const TextField = ({
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value
     setValue(newValue)
-    !!onInput && onInput(newValue)
+    !!onInputChange && onInputChange(newValue)
   }
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown)
