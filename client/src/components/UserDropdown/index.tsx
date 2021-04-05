@@ -1,5 +1,5 @@
-import { signOut } from 'next-auth/client'
 import Link from 'next/link'
+import { signOut } from 'next-auth/client'
 import {
   AccountCircle,
   FavoriteBorder,

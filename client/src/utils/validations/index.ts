@@ -12,18 +12,18 @@ const fieldsValidations = {
     .required()
     .messages({ 'any.only': 'confirm password does not match with password' })
 }
-
 export type FieldErrors = {
   [key: string]: string
 }
-
 function getFieldErrors(objError: Joi.ValidationResult) {
   const errors: FieldErrors = {}
+
   if (objError.error) {
     objError.error.details.forEach((err) => {
-      errors[err.path.join('.')] = err.message
+      errors[err.path.join()] = err.message
     })
   }
+
   return errors
 }
 

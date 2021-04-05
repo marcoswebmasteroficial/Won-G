@@ -4,7 +4,8 @@ import {
   AccountCircle,
   CreditCard,
   ExitToApp,
-  FormatListBulleted
+  FormatListBulleted,
+  Favorite
 } from '@styled-icons/material-outlined'
 
 import * as S from './styles'
@@ -21,7 +22,12 @@ const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
         <span>My profile</span>
       </S.Link>
     </Link>
-
+    <Link href="/profile/wishlist" passHref>
+      <S.Link isActive={activeLink === '/profile/wishlist'} title="My wishlist">
+        <Favorite size={24} />
+        <span>My Wishlist</span>
+      </S.Link>
+    </Link>
     <Link href="/profile/cards" passHref>
       <S.Link isActive={activeLink === '/profile/cards'} title="My cards">
         <CreditCard size={24} />

@@ -4,11 +4,12 @@ describe('validations', () => {
   describe('signInValidate()', () => {
     it('should validate empty fields', () => {
       const values = { email: '', password: '' }
-
-      expect(signInValidate(values)).toMatchObject({
-        email: '"email" is not allowed to be empty',
-        password: '"password" is not allowed to be empty'
-      })
+      expect(signInValidate(values).email).toMatchInlineSnapshot(
+        `"\\"email\\" is not allowed to be empty"`
+      )
+      expect(signInValidate(values).password).toMatchInlineSnapshot(
+        `"\\"password\\" is not allowed to be empty"`
+      )
     })
 
     it('should return invalid email error', () => {
@@ -21,14 +22,24 @@ describe('validations', () => {
 
   describe('signUpValidate()', () => {
     it('should validate empty fields', () => {
-      const values = { username: '', email: '', password: '' }
-
-      expect(signUpValidate(values)).toMatchObject({
-        email: expect.any(String),
-        username: expect.any(String),
-        password: expect.any(String),
-        confirm_password: expect.any(String)
-      })
+      const values = {
+        username: '',
+        email: '',
+        password: '',
+        confirm_password: ''
+      }
+      expect(signUpValidate(values).email).toMatchInlineSnapshot(
+        `"\\"email\\" is not allowed to be empty"`
+      )
+      expect(signUpValidate(values).username).toMatchInlineSnapshot(
+        `"\\"username\\" is not allowed to be empty"`
+      )
+      expect(signUpValidate(values).password).toMatchInlineSnapshot(
+        `"\\"password\\" is not allowed to be empty"`
+      )
+      expect(signUpValidate(values).confirm_password).toMatchInlineSnapshot(
+        `undefined`
+      )
     })
 
     it('should return short username error', () => {
@@ -41,7 +52,7 @@ describe('validations', () => {
 
     it('should return invalid email error', () => {
       const values = {
-        username: 'willian',
+        username: 'user-invalid',
         email: 'invalid-email',
         password: ''
       }
@@ -53,8 +64,8 @@ describe('validations', () => {
 
     it('should return error if password does not match with confirm password', () => {
       const values = {
-        username: 'willian',
-        email: 'will@won.com',
+        username: 'user-invalid',
+        email: 'user@site.com',
         password: '1234',
         confirm_password: '4321'
       }

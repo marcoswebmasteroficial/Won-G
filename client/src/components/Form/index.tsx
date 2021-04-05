@@ -21,7 +21,19 @@ export const FormLoading = styled.img.attrs(() => ({
 }))`
   width: 4rem;
 `
-
+export const FormError = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+    color: ${theme.colors.white};
+    background: ${theme.colors.red};
+    border-radius: 0.3rem;
+    padding: 1rem;
+    font-size: ${theme.font.sizes.medium};
+    svg {
+      width: ${theme.font.sizes.xlarge};
+    }
+  `}
+`
 export const FormLink = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};

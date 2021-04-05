@@ -3,12 +3,19 @@ import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import Wishlist, { WishlistTemplateProps } from 'templates/Wishlist'
 import gamesMock from 'components/GameCardSlider/mock'
 import { QueryRecommended } from 'graphql/generated/QueryRecommended'
-import { gamesMapper, highlightMapper } from 'utils/mappers'
+import protectedRoutes from 'utils/protected-routes'
+import { GetServerSidePropsContext } from 'next'
+import Profile from 'templates/Profile'
 export default function WishlistPage(props: WishlistTemplateProps) {
-  return <Wishlist {...props} />
+  return (
+    <Profile>
+      <Wishlist {...props} />
+    </Profile>
+  )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await protectedRoutes(context)
   const apolloClient = initializeApollo()
   const {
     data: { recommended }
@@ -18,10 +25,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      games: gamesMock,
-      recommendedTitle: recommended?.section?.title,
-      recommendedGames: gamesMapper(recommended?.section?.games),
-      recommendedHighlight: highlightMapper(recommended?.section?.highlight)
+      session,
+      games: gamesMock
     }
   }
 }
