@@ -38,3 +38,23 @@ export function signInValidate(values: SignInValues) {
   const schema = Joi.object({ email, password })
   return getFieldErrors(schema.validate(values, { abortEarly: false }))
 }
+
+type ForgotValidateParams = Pick<UsersPermissionsRegisterInput, 'email'>
+export function forgotValidate(values: ForgotValidateParams) {
+  const { email } = fieldsValidations
+  const schema = Joi.object({ email })
+  return getFieldErrors(schema.validate(values, { abortEarly: false }))
+}
+
+interface RecoverPassword {
+  confirm_password: string
+}
+interface ResetValidateParams
+  extends Omit<UsersPermissionsRegisterInput, 'username' | 'email'>,
+    RecoverPassword {}
+
+export function resetValidate(values: ResetValidateParams) {
+  const { password, confirm_password } = fieldsValidations
+  const schema = Joi.object({ password, confirm_password })
+  return getFieldErrors(schema.validate(values, { abortEarly: false }))
+}

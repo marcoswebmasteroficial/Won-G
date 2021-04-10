@@ -31,6 +31,7 @@ const FormSignUp = () => {
   }
 
   const handleError = (error: string) => {
+    console.log(error)
     if (error.startsWith('Email is already taken.')) {
       setFormError('Email or user already exists')
     }
