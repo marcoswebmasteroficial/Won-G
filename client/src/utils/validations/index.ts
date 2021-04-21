@@ -20,10 +20,9 @@ function getFieldErrors(objError: Joi.ValidationResult) {
 
   if (objError.error) {
     objError.error.details.forEach((err) => {
-      errors[err.path.join()] = err.message
+      errors[err.path.join('.')] = err.message
     })
   }
-
   return errors
 }
 

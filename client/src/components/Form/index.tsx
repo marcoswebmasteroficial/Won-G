@@ -21,6 +21,21 @@ export const FormLoading = styled.img.attrs(() => ({
 }))`
   width: 4rem;
 `
+export const FormSuccess = styled.p`
+  ${({ theme }) => css`
+    text-align: center;
+    color: ${theme.colors.white};
+    font-size: ${theme.font.sizes.medium};
+    background: #8bc34a;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    svg {
+      color: ${theme.colors.white};
+      width: ${theme.font.sizes.xxlarge};
+      margin-right: 1rem;
+    }
+  `}
+`
 export const FormError = styled.div`
   ${({ theme }) => css`
     text-align: center;
