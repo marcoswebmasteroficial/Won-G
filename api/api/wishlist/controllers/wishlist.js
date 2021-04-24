@@ -26,9 +26,12 @@ module.exports = {
       "users-permissions"
     ].services.jwt.getToken(ctx);
     try {
-      const entity = await strapi.services.wishlist.update(
+      
+      
+      const entity = await strapi.services.wishlist.update({user: token.id},
         { id: ctx.params.id },
-        ctx.request.body
+        ctx.request.body,
+        
       );
       return sanitizeEntity(entity, { model: strapi.models.wishlist });
     } catch (err) {
