@@ -20,7 +20,6 @@ const Profile = ({ children }: ProfileTemplateProps) => {
         <Heading line="left" lineColor="secondary">
           My profile
         </Heading>
-
         <S.Main>
           <ProfileMenu activeLink={asPath} />
           <S.Content>{children}</S.Content>
