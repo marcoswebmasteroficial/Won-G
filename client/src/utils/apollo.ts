@@ -1,8 +1,8 @@
-import { setContext } from '@apollo/client/link/context'
-import { Session } from 'next-auth/client'
 import { ApolloClient, HttpLink, NormalizedCacheObject } from '@apollo/client'
-import apolloCache from './apolloCache'
+import { setContext } from '@apollo/client/link/context'
+import { Session } from 'next-auth'
 import { useMemo } from 'react'
+import apolloCache from './apolloCache'
 
 let apolloClient: ApolloClient<NormalizedCacheObject | null>
 

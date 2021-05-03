@@ -7,6 +7,13 @@ import highlightMock from 'components/Highlight/mock'
 import Cart from '.'
 
 const props = {
+  session: {
+    jwt: '1sd1s1d',
+    user: {
+      email: 'won@games.com'
+    },
+    expires: '13234'
+  },
   recommendedHighlight: highlightMock,
   recommendedTitle: 'You may like these games',
   recommendedGames: gamesMock
@@ -54,7 +61,6 @@ describe('<Cart />', () => {
       screen.getByRole('heading', { name: /my cart/i })
     ).toBeInTheDocument()
     expect(screen.getByTestId('Mock Cart')).toBeInTheDocument()
-    expect(screen.getByTestId('Mock PaymentOptions')).toBeInTheDocument()
     expect(screen.getByTestId('Mock PaymentForm')).toBeInTheDocument()
     expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument()
     expect(screen.queryByTestId('Mock Empty')).not.toBeInTheDocument()

@@ -21,7 +21,7 @@ describe('<Wishlist />', () => {
   it('should render empty when there are no games', () => {
     const wishlistProviderProps = {
       ...WishlistContextDefaultValues,
-      items: [gamesMock[0]]
+      items: []
     }
     render(<Wishlist />, { wishlistProviderProps })
     expect(
