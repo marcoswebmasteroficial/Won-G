@@ -5,10 +5,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-`
-
-export const Image = styled.img`
-  max-width: 100%;
+  img {
+    object-fit: cover;
+  }
 `
 
 export const Title = styled.h2`

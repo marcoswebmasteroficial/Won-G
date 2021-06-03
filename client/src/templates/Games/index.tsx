@@ -11,6 +11,7 @@ import Empty from 'components/Empty'
 
 import { Grid } from 'components/Grid'
 import * as S from './styles'
+import { getImageUrl } from 'utils/getImageUrl'
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[]
@@ -66,11 +67,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                     title={item.name}
                     slug={item.slug}
                     developer={item.developers[0].name}
-                    img={
-                      item.cover
-                        ? `http://localhost:1337${item.cover.url}`
-                        : `http://localhost:3000/public/no-image.jpg`
-                    }
+                    img={`${getImageUrl(item.cover!.url)}`}
                     price={item.price}
                   />
                 ))}

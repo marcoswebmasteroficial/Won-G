@@ -41,5 +41,8 @@ export interface QueryOrders {
 }
 
 export interface QueryOrdersVariables {
+  limit?: number | null;
+  start?: number | null;
   identifier: string;
+  sort?: string | null;
 }

@@ -21,12 +21,15 @@ export default function Orders({ items }: OrdersListProps) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await protectedRoutes(context)
+  if (!session) return { props: {} }
   const apolloClient = initializeApollo(null, session)
 
   const { data } = await apolloClient.query<QueryOrders, QueryOrdersVariables>({
     query: QUERY_ORDERS,
     variables: {
-      identifier: session?.id as string
+      identifier: session?.id as string,
+      limit: 3,
+      sort: 'id:desc'
     },
     fetchPolicy: 'no-cache'
   })

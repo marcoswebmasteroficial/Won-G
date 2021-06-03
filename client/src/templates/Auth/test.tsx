@@ -9,7 +9,6 @@ describe('<Auth />', () => {
         <input type="text" />
       </Auth>
     )
-
     // verifiquem se tem 2 logos
     expect(screen.getAllByRole('img', { name: /won games/i })).toHaveLength(2)
 

@@ -8,18 +8,14 @@ import {
 } from 'graphql/generated/QueryUpcoming'
 import { QUERY_UPCOMING } from 'graphql/queries/upcoming'
 import { gamesMapper, highlightMapper } from 'utils/mappers'
-
 import Game, { GameTemplateProps } from 'templates/Game'
-
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games'
-
 import {
   QueryGameBySlug,
   QueryGameBySlugVariables
 } from 'graphql/generated/QueryGameBySlug'
+import { getImageUrl } from 'utils/getImageUrl'
 import { GetStaticProps } from 'next'
 
 const apolloClient = initializeApollo()
@@ -77,7 +73,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     revalidate: 60,
     props: {
-      cover: `http://localhost:1337${game.cover?.src}`,
+      slug: params?.slug,
+      cover: `${getImageUrl(game.cover?.src)}`,
       gameInfo: {
         id: game.id,
         title: game.name,
@@ -85,7 +82,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         description: game.short_description
       },
       gallery: game.gallery.map((image) => ({
-        src: `http://localhost:1337${image.src}`,
+        src: `${getImageUrl(image.src)}`,
         label: image.label
       })),
       description: game.description,
