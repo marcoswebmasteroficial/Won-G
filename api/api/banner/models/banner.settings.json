@@ -18,7 +18,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     },
     "title": {
       "type": "string",
@@ -33,7 +34,7 @@
       "type": "component",
       "repeatable": false,
       "component": "page.button",
-      "required": true
+      "required": false
     },
     "ribbon": {
       "type": "component",
