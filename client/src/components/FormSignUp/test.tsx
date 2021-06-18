@@ -32,7 +32,7 @@ describe('<FormSignUp />', () => {
   })
 
   it('should render text and link to sign in', () => {
-    const { container } = render(
+    render(
       <MockedProvider>
         <FormSignUp />
       </MockedProvider>

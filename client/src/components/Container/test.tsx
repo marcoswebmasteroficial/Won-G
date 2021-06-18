@@ -1,4 +1,4 @@
-import { render, screen } from 'utils/test-utils'
+import { render } from 'utils/test-utils'
 import theme from 'styles/theme'
 import { Container } from '.'
 

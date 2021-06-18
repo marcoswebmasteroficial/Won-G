@@ -13,7 +13,7 @@ export type PaymentInfoProps = {
 
 export type GameItemProps = {
   id: string
-  img: string
+  img: string | null
   title: string
   price: string
   downloadLink?: string
@@ -33,9 +33,8 @@ const GameItem = ({
     <S.Wrapper>
       <S.GameContent>
         <S.ImageBox>
-        <Image src={img} alt={title} width={150} height={70} />
+          <Image src={img ? img : ''} alt={title} width={150} height={70} />
         </S.ImageBox>
-
         <S.Content>
           <S.Title>
             {title}
@@ -64,12 +63,12 @@ const GameItem = ({
           <S.CardInfo>
             <span>{paymentInfo.number}</span>
             {!!paymentInfo.img && (
-                     <Image
-                     src={paymentInfo.img}
-                     alt={paymentInfo.flag}
-                     width={38}
-                     height={24}
-                   />
+              <Image
+                src={paymentInfo.img}
+                alt={paymentInfo.flag}
+                width={38}
+                height={24}
+              />
             )}
           </S.CardInfo>
         </S.PaymentContent>

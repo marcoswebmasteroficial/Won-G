@@ -2,7 +2,6 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 import CartDropdown from '.'
 
 import items from 'components/CartList/mock'
-import formatPrice from 'utils/format-price'
 
 export default {
   title: 'CartDropdown',
@@ -24,7 +23,6 @@ Default.args = {
     items,
     quantity: items.length,
     total: 'R$ 300,00'
-    //   total: formatPrice(items?.reduce((a, b) => a + b.price, 0))
   }
 }
 export const Empty: Story = () => (

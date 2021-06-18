@@ -13,7 +13,7 @@ export type GameCardProps = {
   slug: string
   title: string
   developer: string
-  img: string
+  img: string | null
   price: number
   promotionalPrice?: number
   ribbon?: React.ReactNode
@@ -41,7 +41,12 @@ const GameCard = ({
     )}
     <Link href={`/game/${slug}`} passHref>
       <S.ImageBox>
-        <Image src={img} alt={title} layout="fill" objectFit="cover" />
+        <Image
+          src={img ? img : ''}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+        />
       </S.ImageBox>
     </Link>
     <S.Content>

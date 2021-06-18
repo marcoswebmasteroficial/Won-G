@@ -23,7 +23,7 @@ describe('<CartList />', () => {
       items,
       total: 'R$ 330,00'
     }
-    const { container } = render(<CartList hasButton />, { cartProviderProps })
+    render(<CartList hasButton />, { cartProviderProps })
 
     expect(screen.getByText(/buy it now/i)).toBeInTheDocument()
   })

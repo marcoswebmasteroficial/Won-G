@@ -7,7 +7,7 @@ import { cartMapper } from 'utils/mappers'
 const CART_KEY = 'cartItems'
 export type CartItem = {
   id: string
-  img: string
+  img: string | null
   title: string
   price: string
 }
