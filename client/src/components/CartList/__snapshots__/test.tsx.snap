@@ -153,6 +153,7 @@ exports[`<CartList /> should render the cart list 1`] = `
 
 <div
   class="c0"
+  data-cy="cart-list"
 >
   <div
     class="c1"
@@ -168,7 +169,9 @@ exports[`<CartList /> should render the cart list 1`] = `
         >
           <img
             alt="Red Dead Redemption 2"
+            height="70"
             src="https://source.unsplash.com/user/willianjusten/151x70"
+            width="150"
           />
         </div>
         <div
@@ -202,7 +205,9 @@ exports[`<CartList /> should render the cart list 1`] = `
         >
           <img
             alt="Borderlands 3"
+            height="70"
             src="https://source.unsplash.com/user/willianjusten/151x70"
+            width="150"
           />
         </div>
         <div
