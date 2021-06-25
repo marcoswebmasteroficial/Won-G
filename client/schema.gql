@@ -154,7 +154,7 @@ input BannerInput {
   image: ID
   title: String!
   subtitle: String!
-  button: ComponentPageButtonInput!
+  button: ComponentPageButtonInput
   ribbon: ComponentPageRibbonInput
   published_at: DateTime
   created_by: ID

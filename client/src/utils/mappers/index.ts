@@ -4,8 +4,13 @@ import {
   QueryHome_sections_freeGames_highlight
 } from 'graphql/generated/QueryHome'
 import { QueryOrders_orders } from 'graphql/generated/QueryOrders'
+
+import { QueryCategories_categories } from 'graphql/generated/QueryCategories'
+import { QUERY_CATEGORIES } from 'graphql/queries/categories'
+
 import formatPrice from 'utils/format-price'
 import { getImageUrl } from 'utils/getImageUrl'
+import { QueryPlatforms_platforms } from 'graphql/generated/QueryPlatforms'
 
 export const bannerMapper = (banners: QueryHome_banners[]) => {
   return banners.map((item) => ({
@@ -88,5 +93,29 @@ export const ordersMapper = (orders: QueryOrders_orders[] | undefined) => {
           }))
         }
       })
+    : []
+}
+
+export const categoriesMapper = (
+  categories: QueryCategories_categories[] | null | undefined
+) => {
+  return categories
+    ? categories.map((item) => ({
+        id: item.id,
+        label: item.name,
+        name: item.slug
+      }))
+    : []
+}
+
+export const platformsMapper = (
+  platforms: QueryPlatforms_platforms[] | null | undefined
+) => {
+  return platforms
+    ? platforms.map((item) => ({
+        id: item.id,
+        label: item.name,
+        name: item.slug
+      }))
     : []
 }
