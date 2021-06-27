@@ -1,12 +1,11 @@
-import { initializeApollo } from 'utils/apollo'
+import { initializeApollo } from './../apollo'
 
-import { QueryPlatforms } from 'graphql/generated/QueryPlatforms'
-import { QUERY_PLATAFORMS } from 'graphql/queries/platforms'
-import { platformsMapper } from 'utils/mappers'
+import { QueryPlatforms } from './../../graphql/generated/QueryPlatforms'
+import { QUERY_PLATAFORMS } from './../../graphql/queries/platforms'
+import { categoriesMapper, platformsMapper } from './../mappers'
 
-import { QueryCategories } from 'graphql/generated/QueryCategories'
-import { QUERY_CATEGORIES } from 'graphql/queries/categories'
-import { categoriesMapper } from 'utils/mappers'
+import { QueryCategories } from './../../graphql/generated/QueryCategories'
+import { QUERY_CATEGORIES } from './../../graphql/queries/categories'
 
 const apolloClient = initializeApollo()
 

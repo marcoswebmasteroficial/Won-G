@@ -1,16 +1,15 @@
-import { QueryGames_games } from 'graphql/generated/QueryGames'
+import { QueryGames_games } from './../../graphql/generated/QueryGames'
 import {
   QueryHome_banners,
   QueryHome_sections_freeGames_highlight
-} from 'graphql/generated/QueryHome'
-import { QueryOrders_orders } from 'graphql/generated/QueryOrders'
+} from './../../graphql/generated/QueryHome'
+import { QueryOrders_orders } from './../../graphql/generated/QueryOrders'
 
-import { QueryCategories_categories } from 'graphql/generated/QueryCategories'
-import { QUERY_CATEGORIES } from 'graphql/queries/categories'
+import { QueryCategories_categories } from './../../graphql/generated/QueryCategories'
 
-import formatPrice from 'utils/format-price'
-import { getImageUrl } from 'utils/getImageUrl'
-import { QueryPlatforms_platforms } from 'graphql/generated/QueryPlatforms'
+import formatPrice from './../format-price'
+import { getImageUrl } from './../getImageUrl'
+import { QueryPlatforms_platforms } from './../../graphql/generated/QueryPlatforms'
 
 export const bannerMapper = (banners: QueryHome_banners[]) => {
   return banners.map((item) => ({

@@ -5,7 +5,7 @@ import { parseQueryStringToWhere } from 'utils/filter'
 
 import GamesTemplate, { GamesTemplateProps } from 'templates/Games'
 import { GetServerSidePropsContext } from 'next'
-
+import { categoriesMapper } from 'utils/mappers'
 import {
   priceFields,
   sortFields,
@@ -20,10 +20,6 @@ export default function GamesPage(props: GamesTemplateProps) {
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const apolloClient = initializeApollo()
 
-  const cat = await categoriasFields()
-
-  //const platformFields = platformsMapper(p.data.platforms)
-  const plat = await platformFields()
   const filterPrice = {
     title: 'Price',
     name: 'price_lte',
@@ -35,7 +31,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     title: 'Platforms',
     name: 'platforms',
     type: 'checkbox',
-    fields: plat
+    fields: await platformFields()
   }
 
   const filterSort = {
@@ -49,7 +45,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     title: 'Genres',
     name: 'categories',
     type: 'checkbox',
-    fields: cat
+    fields: await categoriasFields()
   }
 
   const filterItems = [
