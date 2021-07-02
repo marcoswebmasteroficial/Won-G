@@ -9,7 +9,7 @@ import * as S from './styles'
 const Wishlist = () => {
   const { items, loading } = useWishlist()
   return (
-    <>
+    <div data-cy="wishlist">
       <Heading line="bottom" lineColor="primary" color="black" size="small">
         My Wishlist
       </Heading>
@@ -30,7 +30,7 @@ const Wishlist = () => {
           hasLink
         />
       )}
-    </>
+    </div>
   )
 }
 

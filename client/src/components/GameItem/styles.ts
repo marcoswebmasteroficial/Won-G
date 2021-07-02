@@ -63,7 +63,7 @@ export const Group = styled.div`
   width: 100%;
 `
 
-export const Remove = styled.div`
+export const Remove = styled.a`
   ${({ theme }) => css`
     cursor: pointer;
     color: ${theme.colors.primary};
