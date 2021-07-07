@@ -1,4 +1,6 @@
 import '@testing-library/cypress/add-commands'
+import 'cypress-plugin-stripe-elements'
+
 import { User } from './generate'
 Cypress.Commands.add('getByDataCy', (selector, ...args) => {
   return cy.get(`[data-cy="${selector}"]`, ...args)
@@ -9,10 +11,8 @@ Cypress.Commands.add('shouldRenderBanner', () => {
     cy.findByRole('heading', { name: /warhammer skulls/i })
     cy.findByRole('link', { name: /go to giveaway/i })
     cy.get('.slick-dots > :nth-child(2) > button').click()
-    cy.wait(500)
     cy.findByRole('heading', { name: /grim dawn definitive edition/i })
     cy.get('.slick-dots > :nth-child(3) > button').click()
-    cy.wait(500)
     cy.findByRole('heading', { name: /cyberpunk 2077/i })
     cy.findByRole('link', { name: /buy now/i })
   })
@@ -92,7 +92,6 @@ Cypress.Commands.add('addToWishListByIndex', (index) => {
     .within(() => {
       cy.findByLabelText(/add to wishlist/i).click()
     })
-  cy.wait(500)
 })
 
 Cypress.Commands.add('removeFromWishListByIndex', (index) => {
@@ -101,5 +100,4 @@ Cypress.Commands.add('removeFromWishListByIndex', (index) => {
     .within(() => {
       cy.findByLabelText(/remove from wishlist/i).click()
     })
-  cy.wait(500)
 })

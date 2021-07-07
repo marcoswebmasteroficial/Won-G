@@ -11,10 +11,7 @@ describe('Wishlist', () => {
     // verifica se a wishlist tá vazia
     cy.findByText(/your wishlist is empty/i).should('exist')
 
-    // pegar um jogo e adicionar
-
     cy.visit('/')
-    cy.wait(500)
 
     cy.addToWishListByIndex(0)
     cy.addToWishListByIndex(1)
@@ -23,8 +20,6 @@ describe('Wishlist', () => {
     // verificar se o jogo está lá
     cy.getByDataCy('wishlist').within(() => {
       cy.getByDataCy('game-card').should('have.length', 2)
-      cy.wait(500)
-
       cy.removeFromWishListByIndex(0)
       cy.removeFromWishListByIndex(0)
     })

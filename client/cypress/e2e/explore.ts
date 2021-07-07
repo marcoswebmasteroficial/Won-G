@@ -89,19 +89,15 @@ describe('Explore Page', () => {
   })
   it('should filter by platform and genre', () => {
     cy.findByText(/windows/i).click()
-    cy.wait(500)
     cy.location('href').should('contain', 'platforms=windows')
 
     cy.findByText(/linux/i).click()
-    cy.wait(500)
     cy.location('href').should('contain', 'platforms=linux')
 
     cy.findByText(/mac os/i).click()
-    cy.wait(500)
     cy.location('href').should('contain', 'platforms=mac')
 
     cy.findByText(/action/i).click()
-    cy.wait(500)
     cy.location('href').should('contain', 'categories=action')
   })
 })
