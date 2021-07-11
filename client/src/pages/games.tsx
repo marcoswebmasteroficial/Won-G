@@ -5,7 +5,7 @@ import { parseQueryStringToWhere } from 'utils/filter'
 
 import GamesTemplate, { GamesTemplateProps } from 'templates/Games'
 import { GetServerSidePropsContext } from 'next'
-import { categoriesMapper } from 'utils/mappers'
+
 import {
   priceFields,
   sortFields,
