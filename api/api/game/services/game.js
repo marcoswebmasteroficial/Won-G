@@ -1,4 +1,5 @@
 "use strict";
+
 const axios = require("axios");
 const slugify = require("slugify");
 const qs = require("querystring");
@@ -58,6 +59,7 @@ async function createManyToManyData(products) {
     genres?.forEach((item) => {
       categories.add(item);
     });
+
     supportedOperatingSystems?.forEach((item) => {
       platforms.add(item);
     });
@@ -65,8 +67,10 @@ async function createManyToManyData(products) {
     developers.add(developer);
     publishers.add(publisher);
   });
+
   const createCall = (set, entityName) =>
     Array.from(set).map((name) => create(name, entityName));
+
   return Promise.all([
     ...createCall(developers, "developer"),
     ...createCall(publishers, "publisher"),
@@ -74,6 +78,7 @@ async function createManyToManyData(products) {
     ...createCall(platforms, "platform"),
   ]);
 }
+
 async function setImage({ image, game, field = "cover" }) {
   try {
     const url = `https:${image}.jpg`;
@@ -102,6 +107,7 @@ async function setImage({ image, game, field = "cover" }) {
     console.log("setImage", Exception(e));
   }
 }
+
 async function createGames(products) {
   await Promise.all(
     products.map(async (product) => {
@@ -144,12 +150,14 @@ async function createGames(products) {
     })
   );
 }
+
 module.exports = {
   populate: async (params) => {
     try {
       const gogApiUrl = `https://www.gog.com/games/ajax/filtered?mediaType=game&${qs.stringify(
         params
       )}`;
+
       const {
         data: { products },
       } = await axios.get(gogApiUrl);
