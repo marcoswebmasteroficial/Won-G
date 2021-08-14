@@ -71,11 +71,9 @@ export const itemSliderDots = styled.div`
 `
 
 export const itemSliderDotsImagem = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    height: 8rem;
-    width: 6rem;
-    overflow: hidden;
-    position: absolute;
-  `}
+  display: flex;
+  height: 8rem;
+  width: 6rem;
+  overflow: hidden;
+  position: absolute;
 `

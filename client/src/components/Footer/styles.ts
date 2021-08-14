@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
-import { darken } from 'polished'
+
 import * as HeadingStyles from 'components/Heading/styles'
 
 export const Wrapper = styled.footer`

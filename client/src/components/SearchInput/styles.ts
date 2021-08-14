@@ -110,7 +110,7 @@ export const Wrapper = styled.div<WrapperProps>`
 export const Dropdown = styled.ul`
   position: absolute;
   z-index: 1000;
-  bottom: 6.5rem;
+  bottom: 1rem;
   transform: translateY(100%);
   background-color: rgb(32, 32, 32);
   padding: 0px;

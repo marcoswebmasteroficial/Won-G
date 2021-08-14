@@ -1,17 +1,15 @@
 import styled, { css, DefaultTheme } from 'styled-components'
 
 export const Wrapper = styled.article`
-  ${({ theme }) => css`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 350px;
-    background-color: rgb(255 255 255 / 5%);
-    &:hover div {
-      opacity: 1;
-    }
-  `}
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 350px;
+  background-color: rgb(255 255 255 / 5%);
+  &:hover div {
+    opacity: 1;
+  }
 `
 export const FavButton = styled.div`
   ${({ theme }) => css`
@@ -110,9 +108,7 @@ export const OptionsButton = styled.div`
 `
 
 export const BuyBox = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-  `}
+  display: flex;
 `
 
 type PriceProps = {
