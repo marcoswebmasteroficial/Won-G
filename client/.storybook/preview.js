@@ -21,18 +21,17 @@ export const parameters = {
 }
 
 export const decorators = [
-  (Story,context) => (
+  (Story, context) => (
     <ThemeProvider theme={theme}>
       <GlobalStyles removeBg />
-          <CartContext.Provider
+      <CartContext.Provider
         value={{
           ...CartContextDefaultValues,
           ...(context?.args?.cartContextValue || {}),
           ...context.args
         }}
       >
-      
-      <Story />
+        <Story />
       </CartContext.Provider>
     </ThemeProvider>
   )

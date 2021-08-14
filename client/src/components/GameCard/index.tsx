@@ -39,6 +39,11 @@ const GameCard = ({
         {ribbon}
       </Ribbon>
     )}
+
+    <S.OptionsButton>
+      <WishlistButton id={id} />
+      <CartButton id={id} />
+    </S.OptionsButton>
     <Link href={`/game/${slug}`} passHref>
       <S.ImageBox>
         <Image
@@ -56,15 +61,11 @@ const GameCard = ({
           <S.Developer>{developer}</S.Developer>
         </S.Info>
       </Link>
-      <S.FavButton>
-        <WishlistButton id={id} />
-      </S.FavButton>
       <S.BuyBox>
         {!!promotionalPrice && (
           <S.Price isPromotional>{formatPrice(price)}</S.Price>
         )}
         <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
-        <CartButton id={id} />
       </S.BuyBox>
     </S.Content>
   </S.Wrapper>

@@ -1,15 +1,15 @@
 import Link from 'next/link'
-
+import { Divider } from 'components/Divider'
 import Heading from 'components/Heading'
 import Logo from 'components/Logo'
 import * as S from './styles'
 
 const Footer = () => (
   <S.Wrapper>
-    <Logo color="black" />
+    <Logo color="white" />
     <S.Content>
       <S.Column>
-        <Heading color="black" size="small" line="bottom" lineColor="secondary">
+        <Heading color="black" size="small">
           Contact Us
         </Heading>
 
@@ -17,7 +17,7 @@ const Footer = () => (
       </S.Column>
 
       <S.Column aria-labelledby="social-media">
-        <Heading color="black" lineColor="secondary" line="bottom" size="small">
+        <Heading color="black" size="small">
           Follow us
         </Heading>
 
@@ -54,7 +54,7 @@ const Footer = () => (
       </S.Column>
 
       <S.Column aria-labelledby="resources">
-        <Heading color="black" lineColor="secondary" line="bottom" size="small">
+        <Heading color="black" size="small">
           Links
         </Heading>
 
@@ -72,7 +72,7 @@ const Footer = () => (
       </S.Column>
 
       <S.Column aria-label="contact">
-        <Heading color="black" lineColor="secondary" line="bottom" size="small">
+        <Heading color="black" size="small">
           Location
         </Heading>
         <span>Lorem ipsum dolor sit.</span>
@@ -80,7 +80,7 @@ const Footer = () => (
         <span>Lorem, ipsum dolor.</span>
       </S.Column>
     </S.Content>
-
+    <Divider />
     <S.Copyright>
       Won Games 2000 - {new Date().getFullYear()} © All rights reserved.
     </S.Copyright>

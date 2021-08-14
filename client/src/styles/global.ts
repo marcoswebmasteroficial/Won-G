@@ -13,6 +13,12 @@ const GlobalStyles: GlobalStyleComponent<
   GlobalStylesProps,
   DefaultTheme
 > = createGlobalStyle`
+*, ::after, ::before {
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  box-sizing: inherit;
+}
   @font-face {
     font-family: 'Poppins';
     font-style: normal;

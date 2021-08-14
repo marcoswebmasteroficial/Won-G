@@ -38,7 +38,7 @@ export const QUERY_HOME = gql`
         highlight {
           ...HighlightFragment
         }
-        games(limit: 8) {
+        games(limit: 9) {
           ...GameFragment
         }
       }

@@ -3,7 +3,7 @@ import media from 'styled-media-query'
 
 import * as RibbonStyles from 'components/Ribbon/styles'
 
-export const Wrapper = styled.main`
+export const Wrapper = styled.div`
   position: relative;
 
   ${media.lessThan('large')`
@@ -28,7 +28,7 @@ export const ImageWrapper = styled.div`
     background-color: ${theme.colors.lightGray};
     position: relative;
     ${media.greaterThan('medium')`
-      height: 58rem;
+      height: 48rem;
     `}
   `}
 `
@@ -40,8 +40,8 @@ export const Caption = styled.div`
     padding: ${theme.spacings.small};
 
     ${media.greaterThan('medium')`
-      border-radius: 0 0 ${theme.border.radius} ${theme.border.radius};
-      padding: ${theme.spacings.large};
+
+      padding: ${theme.spacings.small};
       position: absolute;
       bottom: 0;
       left: 0;

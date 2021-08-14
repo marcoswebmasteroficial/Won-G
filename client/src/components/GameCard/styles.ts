@@ -6,23 +6,34 @@ export const Wrapper = styled.article`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 260px;
-    background-color: ${theme.colors.white};
+    height: 350px;
+    background-color: rgb(255 255 255 / 5%);
+    &:hover div {
+      opacity: 1;
+    }
   `}
 `
-
+export const FavButton = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.primary};
+    position: absolute;
+    right: -1rem;
+    top: -0.5rem;
+    cursor: pointer;
+    svg {
+      width: 2.5rem;
+    }
+  `}
+`
 export const ImageBox = styled.a`
-  min-height: 14rem;
+  min-height: 25rem;
   position: relative;
   width: 100%;
   background: #f6f7f8;
-  background-image: linear-gradient(
-    to right,
-    #f6f7f8 0%,
-    #edeef1 20%,
-    #f6f7f8 40%,
-    #f6f7f8 100%
-  );
+  overflow: hidden;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, rgb(43, 43, 43), rgb(32, 32, 32));
+  color: rgba(245, 245, 245, 0.6);
   background-size: 80rem 14rem;
   animation: placeholderShimmer 1s linear infinite forwards;
 
@@ -53,43 +64,47 @@ export const Info = styled.a`
   text-decoration: none;
 `
 
-export const Title = styled.h3`
+export const Title = styled.span`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.medium};
-    line-height: ${theme.font.sizes.medium};
-    font-weight: ${theme.font.bold};
-    color: ${theme.colors.black};
+    line-height: ${theme.font.sizes.large};
+    font-weight: ${theme.font.light};
+    color: ${theme.colors.white};
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+    display: block;
+    white-space: nowrap;
   `}
 `
 
-export const Developer = styled.h4`
+export const Developer = styled.span`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
-    font-weight: ${theme.font.bold};
-    color: ${theme.colors.gray};
+    font-weight: ${theme.font.light};
+    color: rgba(245, 245, 245, 0.6);
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 1;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+    display: block;
+    white-space: nowrap;
   `}
 `
 
-export const FavButton = styled.div`
+export const OptionsButton = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.primary};
     position: absolute;
-    right: -1rem;
-    top: -0.5rem;
+    top: 1rem;
+    right: 0;
     cursor: pointer;
-
+    display: flex;
+    flex-direction: column;
+    z-index: ${theme.layers.overlay};
+    opacity: 0;
     svg {
-      width: 2.5rem;
+      width: 2.6rem;
+      background: #000000c4;
+      box-shadow: -1px 1px 6px #121313;
+      border-radius: 1.5rem;
+      padding: 0.3rem;
     }
   `}
 `
@@ -97,9 +112,6 @@ export const FavButton = styled.div`
 export const BuyBox = styled.div`
   ${({ theme }) => css`
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: ${theme.spacings.xxsmall};
   `}
 `
 
@@ -111,8 +123,7 @@ const priceModifiers = {
   default: (theme: DefaultTheme) => css`
     color: ${theme.colors.white};
     padding: 0 ${theme.spacings.xxsmall};
-    background-color: ${theme.colors.secondary};
-    border-radius: ${theme.border.radius};
+    font-weight: ${theme.font.light};
     margin-right: calc(${theme.spacings.xxsmall} / 2);
   `,
 

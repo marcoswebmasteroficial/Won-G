@@ -27,10 +27,14 @@ export const Column = styled.div`
     a,
     span {
       display: block;
-      color: ${darken(0.2, theme.colors.gray)};
+      color: #e7e7e7;
       text-decoration: none;
       margin-bottom: ${theme.spacings.xxsmall};
       font-size: ${theme.font.sizes.medium};
+    }
+    h2 {
+      color: #ccc;
+      opacity: 0.4;
     }
     a {
       word-wrap: break-word;
@@ -45,9 +49,7 @@ export const Column = styled.div`
 export const Copyright = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.gray};
-    font-size: ${theme.font.sizes.xsmall};
-    margin-top: ${theme.spacings.large};
-    margin-bottom: ${theme.spacings.medium};
-    text-align: center;
+    font-size: 1rem;
+    margin-top: ${theme.spacings.small};
   `}
 `

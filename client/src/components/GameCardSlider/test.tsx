@@ -8,7 +8,7 @@ import GameCardSlider from '.'
 describe('<GameSlider />', () => {
   it('should render with 4 active items', () => {
     const { container } = render(<GameCardSlider items={items} />)
-    expect(container.querySelectorAll('.slick-active')).toHaveLength(4)
+    expect(container.querySelectorAll('.slick-active')).toHaveLength(5)
   })
 
   it('should render white arrows if color passed', () => {

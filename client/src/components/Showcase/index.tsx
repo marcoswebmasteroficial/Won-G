@@ -13,11 +13,7 @@ export type ShowcaseProps = {
 }
 const Showcase = ({ title, highlight, games, arrowcolor }: ShowcaseProps) => (
   <S.Wrapper data-cy={title || 'showcase'}>
-    {!!title && (
-      <Heading line="left" lineColor="secondary">
-        {title}
-      </Heading>
-    )}
+    {!!title && <Heading size="small">{title}</Heading>}
     {!!highlight && <Highlight {...highlight} />}
     {!!games && <GameCardSlider color={arrowcolor} items={games} />}
   </S.Wrapper>

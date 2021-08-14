@@ -25,16 +25,15 @@ describe('<Showcase />', () => {
       screen.getByRole('heading', { name: highlightMock.title })
     ).toBeInTheDocument()
 
-    expect(
-      screen.getByRole('heading', { name: gamesMock[0].title })
-    ).toBeInTheDocument()
+    expect(screen.getByText(gamesMock[0].title)).toBeInTheDocument()
   })
 
   it('should render without title', () => {
     render(<Showcase games={props.games} highlight={props.highlight} />)
 
     screen.getByRole('heading', { name: highlightMock.title })
-    screen.getByRole('heading', { name: gamesMock[0].title })
+
+    expect(screen.getByText(gamesMock[0].title)).toBeInTheDocument()
 
     expect(
       screen.queryByRole('heading', { name: /most popular/i })
@@ -45,8 +44,8 @@ describe('<Showcase />', () => {
     render(<Showcase title={props.title} games={props.games} />)
 
     screen.getByRole('heading', { name: /most popular/i })
-    screen.getByRole('heading', { name: gamesMock[0].title })
 
+    expect(screen.getByText(gamesMock[0].title)).toBeInTheDocument()
     expect(
       screen.queryByRole('heading', { name: highlightMock.title })
     ).not.toBeInTheDocument()

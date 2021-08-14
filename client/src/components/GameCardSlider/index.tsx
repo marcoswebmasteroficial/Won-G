@@ -8,7 +8,7 @@ import * as S from './styles'
 
 const settings: SliderSettings = {
   arrows: true,
-  slidesToShow: 4,
+  slidesToShow: 5,
   infinite: false,
   lazyLoad: 'ondemand',
   responsive: [

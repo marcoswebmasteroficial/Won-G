@@ -8,7 +8,11 @@ import * as HighlightStyles from 'components/Highlight/styles'
 
 export const Wrapper = styled(Container).attrs({ as: 'section' })`
   ${({ theme }) => css`
-    ${HeadingStyles.Wrapper},
+    ${HeadingStyles.Wrapper} {
+      line-height: 1.4;
+      font-weight: 400;
+      margin-bottom: ${theme.spacings.xsmall};
+    }
     ${HighlightStyles.Wrapper},
     ${GameCardSliderStyles.Wrapper} {
       margin-bottom: ${theme.spacings.medium};
@@ -26,7 +30,5 @@ export const Wrapper = styled(Container).attrs({ as: 'section' })`
         margin-right: calc(-${theme.grid.gutter} / 2);
       `}
     }
-
-    margin-bottom: calc(${theme.spacings.large} * 2);
   `}
 `

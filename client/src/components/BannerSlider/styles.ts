@@ -2,25 +2,19 @@ import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 import * as BannerStyles from 'components/Banner/styles'
 
-export const Wrapper = styled.section`
+export const Wrapper = styled.div`
   ${({ theme }) => css`
     .slick-dots {
       list-style: none;
       display: flex !important;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      justify-content: flex-start;
       margin-top: ${theme.spacings.small};
 
       li {
-        background: ${theme.colors.white};
-        width: 1.2rem;
-        height: 1.2rem;
-        border-radius: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 ${theme.spacings.xxsmall};
-        cursor: pointer;
+        background: #232222;
+        width: 100%;
+        height: 100%;
 
         &.slick-active {
           background: ${theme.colors.primary};
@@ -37,8 +31,8 @@ export const Wrapper = styled.section`
 
     ${media.greaterThan('large')`
       ${BannerStyles.Wrapper} {
-        max-width: 104rem;
-        margin: 0 auto;
+        max-width: 106rem;
+       
       }
 
       .slick-dots {
@@ -50,9 +44,38 @@ export const Wrapper = styled.section`
         margin: 0;
 
         li {
-          margin: ${theme.spacings.xxsmall} 0;
+          border-top: 0.1rem #e8e1e112 solid;
         }
       }
     `}
+  `}
+`
+export const itemSliderDots = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    > div {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: ${theme.colors.white};
+      font-size: ${theme.font.sizes.small};
+      font-weight: ${theme.font.normal};
+    }
+  `}
+`
+
+export const itemSliderDotsImagem = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    height: 8rem;
+    width: 6rem;
+    overflow: hidden;
+    position: absolute;
   `}
 `

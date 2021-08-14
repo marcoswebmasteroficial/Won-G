@@ -9,13 +9,8 @@ describe('<GameCard />', () => {
   it('should render correctly', () => {
     const { container } = render(<GameCard {...item} />)
 
-    expect(
-      screen.getByRole('heading', { name: item.title })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('heading', { name: item.developer })
-    ).toBeInTheDocument()
+    expect(screen.getByText(item.title)).toBeInTheDocument()
+    expect(screen.getByText(item.developer)).toBeInTheDocument()
 
     expect(screen.getByRole('img', { name: item.title })).toHaveAttribute(
       'src',
@@ -34,7 +29,6 @@ describe('<GameCard />', () => {
     render(<GameCard {...item} />)
     const price = screen.getByText('$235.00')
     expect(price).not.toHaveStyle({ textDecoration: 'line-through' })
-    expect(price).toHaveStyle({ backgroundColor: theme.colors.secondary })
   })
 
   it('should render a line-through in price when promotional', () => {
