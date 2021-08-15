@@ -1,19 +1,18 @@
 import React, { InputHTMLAttributes, useEffect, useState } from 'react'
-import { initializeApollo } from 'utils/apollo'
+
 import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 import Link from 'next/link'
 import * as S from './styles'
-import {
-  QuerySearch,
-  QuerySearchVariables
-} from 'graphql/generated/QuerySearch'
-import { QUERY_SEARCH } from 'graphql/queries/search'
+import { QuerySearch_games } from 'graphql/generated/QuerySearch'
 
 export type SearchInputProps = {
   onInputChange?: (value: string) => void
   label?: string
+  initialValue?: string
   iconPosition?: 'left' | 'right'
+  total?: number
+  items?: QuerySearch_games[]
   disabled?: boolean
   error?: string
 } & InputHTMLAttributes<HTMLInputElement>
@@ -23,33 +22,34 @@ const SearchInput = ({
   label,
   name,
   error,
+  total = 0,
+  items = [],
   disabled = false,
+  initialValue = '',
   onInputChange,
   ...props
 }: SearchInputProps) => {
   const [value, setValue] = useState('')
   const [isFocused, setIsFocused] = useState(false)
-  const apolloClient = initializeApollo()
   const [Result, setResult] = useState<JSX.Element[]>([])
-  const [numberResult, setNumberResult] = useState(0)
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.currentTarget?.value
+    newValue.length > 0 ? setIsFocused(true) : setIsFocused(false)
+    setValue(newValue)
+    !!onInputChange && onInputChange(newValue)
+  }
+
+  const CloseSearch = () => {
+    setValue('')
+    !!onInputChange && onInputChange('')
+    setIsFocused(false)
+  }
 
   const Search = async () => {
-    const { data } = await apolloClient.query<
-      QuerySearch,
-      QuerySearchVariables
-    >({
-      query: QUERY_SEARCH,
-      variables: {
-        keywords: value,
-        start: 0,
-        limit: 10,
-        sort: 'name:asc'
-      }
-    })
-    setNumberResult(data.games.length)
     setResult(
-      data.games
-        ? data.games.slice(0, 4).map((item) => {
+      items
+        ? items.map((item) => {
             const parts = item.name.split(new RegExp(`(${value})`, 'gi'))[1]
             return (
               <S.ItemLi key={item.id} onClick={CloseSearch}>
@@ -69,23 +69,9 @@ const SearchInput = ({
         : []
     )
   }
-
   useEffect(() => {
     Search()
   }, [value])
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.currentTarget?.value
-    newValue.length > 0 ? setIsFocused(true) : setIsFocused(false)
-    setValue(newValue)
-    !!onInputChange && onInputChange(newValue)
-  }
-
-  const CloseSearch = () => {
-    setValue('')
-    !!onInputChange && onInputChange('')
-    setIsFocused(false)
-  }
 
   return (
     <>
@@ -114,9 +100,9 @@ const SearchInput = ({
           {Result.length > 0 && value.replace(/\s+/g, '').length > 0 ? (
             <>
               {Result}
-              {numberResult > 4 && (
+              {total > 4 && (
                 <S.Viewmore>
-                  <a role="link" href={`/games?query=${value}`}>
+                  <a role="link" href={`/games?name=${value}`}>
                     Ver mais +
                   </a>
                 </S.Viewmore>

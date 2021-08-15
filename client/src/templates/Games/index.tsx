@@ -45,7 +45,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const hasMoreGames = games.length < (gamesConnection?.values?.length || 0)
 
   return (
-    <Base>
+    <Base hideSearch>
       <S.Main>
         <ExploreSidebar
           initialValues={parseQueryStringToFilter({

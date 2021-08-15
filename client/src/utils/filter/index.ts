@@ -10,18 +10,24 @@ export const parseQueryStringToWhere = ({
   filterItems
 }: ParseArgs) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const obj: any = {}
   Object.keys(queryString)
     .filter((item) => item !== 'sort')
     .forEach((key) => {
-      //procurar item pela key
-      const item = filterItems?.find((item) => item.name === key)
-      //verificar se o item e do type checkbox
-      const isCheckbox = item?.type === 'checkbox'
+      if (key !== 'name') {
+        //procurar item pela key
+        const item = filterItems?.find((item) => item.name === key)
 
-      obj[key] = !isCheckbox
-        ? queryString[key]
-        : { name_contains: queryString[key] }
+        //verificar se o item e do type checkbox
+        const isCheckbox = item?.type === 'checkbox'
+
+        obj[key] = !isCheckbox
+          ? queryString[key]
+          : { name_contains: queryString[key] }
+      } else {
+        obj['name_contains'] = queryString[key]
+      }
     })
   return obj
 }

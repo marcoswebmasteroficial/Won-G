@@ -7,14 +7,15 @@ import * as S from './styles'
 
 export type BaseTemplateProps = {
   children: React.ReactNode
+  hideSearch?: boolean
 }
 
-const Base = ({ children }: BaseTemplateProps) => {
+const Base = ({ children, hideSearch = false }: BaseTemplateProps) => {
   const [session] = useSession()
   return (
     <S.Wrapper>
       <Container>
-        <Menu username={session?.user?.name} />
+        <Menu username={session?.user?.name} search={hideSearch} />
       </Container>
 
       <S.Content>{children}</S.Content>

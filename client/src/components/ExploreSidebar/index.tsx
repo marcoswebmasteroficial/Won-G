@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import xor from 'lodash.xor'
 import { Close } from '@styled-icons/material-outlined/Close'
 import { FilterList } from '@styled-icons/material-outlined/FilterList'
@@ -7,7 +7,7 @@ import Heading from 'components/Heading'
 import Button from 'components/Button'
 import Checkbox from 'components/Checkbox'
 import Radio from 'components/Radio'
-
+import SearchInput from 'components/SearchInput'
 import * as S from './styles'
 import { ParsedUrlQueryInput } from 'querystring'
 
@@ -56,6 +56,13 @@ const ExploreSidebar = ({
   const handleFilterMenu = () => {
     setIsOpen(false)
   }
+  const handleSearch = (name: string, value: string) => {
+    if (value.length > 3) {
+      setTimeout(() => {
+        setValues((s) => ({ ...s, [name]: value }))
+      }, 2000)
+    }
+  }
 
   return (
     <S.Wrapper isOpen={isOpen}>
@@ -66,6 +73,15 @@ const ExploreSidebar = ({
       </S.IconWrapper>
 
       <S.Content>
+        <Heading line="bottom" lineColor="secondary" size="small">
+          Procurar
+        </Heading>
+        <SearchInput
+          aria-label="Search"
+          iconPosition="right"
+          placeholder="Pesquisar Game"
+          onInputChange={(v) => handleSearch('name', v)}
+        />
         {items.map((item) => (
           <S.Items key={item.title}>
             <Heading line="bottom" lineColor="secondary" size="small">

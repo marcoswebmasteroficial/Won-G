@@ -27,9 +27,7 @@ export const Wrapper = styled.section<WrapperProps>`
     }
 
     ${media.greaterThan('large')`
-      .slick-slide > div {
-        margin: 0 ${theme.spacings.xsmall};
-      }
+   
 
       .slick-list {
         margin: 0 -${theme.spacings.xsmall};
