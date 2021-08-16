@@ -78,15 +78,6 @@ export const Error = styled.p`
 `
 
 const wrapperModifiers = {
-  error: (theme: DefaultTheme) => css`
-    ${InputWrapper} {
-      border-color: ${theme.colors.red};
-    }
-    ${Icon},
-    ${Label} {
-      color: ${theme.colors.red};
-    }
-  `,
   disabled: (theme: DefaultTheme) => css`
     ${Label},
     ${Input},
@@ -101,9 +92,9 @@ const wrapperModifiers = {
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, error, disabled }) => css`
-    ${error && wrapperModifiers.error(theme)}
+  ${({ theme, disabled }) => css`
     ${disabled && wrapperModifiers.disabled(theme)}
+    margin-bottom: 1rem;
   `}
 `
 

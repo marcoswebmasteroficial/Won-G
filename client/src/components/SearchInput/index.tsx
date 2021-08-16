@@ -14,22 +14,22 @@ export type SearchInputProps = {
   total?: number
   items?: QuerySearch_games[]
   disabled?: boolean
-  error?: string
+  dropdown?: boolean
 } & InputHTMLAttributes<HTMLInputElement>
 
 const SearchInput = ({
   iconPosition = 'left',
   label,
   name,
-  error,
   total = 0,
   items = [],
   disabled = false,
+  dropdown = true,
   initialValue = '',
   onInputChange,
   ...props
 }: SearchInputProps) => {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState(initialValue)
   const [isFocused, setIsFocused] = useState(false)
   const [Result, setResult] = useState<JSX.Element[]>([])
 
@@ -75,7 +75,7 @@ const SearchInput = ({
 
   return (
     <>
-      <S.Wrapper disabled={disabled} error={!!error}>
+      <S.Wrapper disabled={disabled}>
         {!!label && <S.Label htmlFor={name}>{label}</S.Label>}
         <S.InputWrapper>
           <S.Icon iconPosition={iconPosition}>
@@ -93,9 +93,8 @@ const SearchInput = ({
             {...props}
           />
         </S.InputWrapper>
-        {!!error && <S.Error>{error}</S.Error>}
       </S.Wrapper>
-      {!!isFocused && (
+      {dropdown && !!isFocused && (
         <S.Dropdown>
           {Result.length > 0 && value.replace(/\s+/g, '').length > 0 ? (
             <>

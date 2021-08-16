@@ -58,12 +58,15 @@ const ExploreSidebar = ({
   }
   const handleSearch = (name: string, value: string) => {
     if (value.length > 3) {
-      setTimeout(() => {
+      const exec = setTimeout(() => {
         setValues((s) => ({ ...s, [name]: value }))
       }, 2000)
+      return () => clearTimeout(exec)
     }
   }
-
+  const Teste = () => {
+    console.log('ok')
+  }
   return (
     <S.Wrapper isOpen={isOpen}>
       <S.Overlay aria-hidden={isOpen} />
@@ -80,8 +83,11 @@ const ExploreSidebar = ({
           aria-label="Search"
           iconPosition="right"
           placeholder="Pesquisar Game"
+          initialValue={String(values['name'])}
+          dropdown={false}
           onInputChange={(v) => handleSearch('name', v)}
         />
+
         {items.map((item) => (
           <S.Items key={item.title}>
             <Heading line="bottom" lineColor="secondary" size="small">
